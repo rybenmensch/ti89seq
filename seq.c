@@ -69,7 +69,7 @@ void _main(void){
 	ClrScr();
 	printf_xy(50, 50, "EAT");
 	printf_xy(50, 60, "SHIT");
-	printf_xy(50, 70, "INC");
+	printf_xy(50, 70, "BRU");
 
 	int k = ngetchx();
 
