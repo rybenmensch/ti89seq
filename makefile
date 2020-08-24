@@ -1,2 +1,2 @@
 make:
-	$(TIGCC)/bin/tigcc seq.c
+	$(TIGCC)/bin/tigcc seq.c -o mmmseq
