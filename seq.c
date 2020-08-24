@@ -38,7 +38,7 @@ void _main(void){
 	resettime=1;
 
 	oldint5 = GetIntVec(AUTO_INT_5);
-	SetIntVec(AUtO_INT_5, myint5handler);
+	SetIntVec(AUTO_INT_5, myint5handler);
 
 	printf_xy(0, 0, "[ESC] end");
 	printf_xy(0, 10, "[ENTER] run/stop");
@@ -46,7 +46,7 @@ void _main(void){
 
 	while(!leave_program){
 		if(!(mseconds50%5)){
-			printf(50, 50, "%02d", stepcounter);
+			printf_xy(50, 50, "%02d", stepcounter);
 		}
 
 		if(kbhit()){
@@ -66,7 +66,7 @@ void _main(void){
 		}
 	}
 
-	CLrScr();
+	ClrScr();
 	printf_xy(50, 50, "EAT");
 	printf_xy(50, 60, "SHIT");
 	printf_xy(50, 70, "INC");
