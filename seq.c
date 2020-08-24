@@ -30,3 +30,50 @@ DEFINE_INT_HANDLER(myint5handler){
 
 	ExecuteHandler(oldint5);
 }
+
+void _main(void){
+	int leave_program = 0;
+	ClrScr();
+	running=0;
+	resettime=1;
+
+	oldint5 = GetIntVec(AUTO_INT_5);
+	SetIntVec(AUtO_INT_5, myint5handler);
+
+	printf_xy(0, 0, "[ESC] end");
+	printf_xy(0, 10, "[ENTER] run/stop");
+	printf_xy(0, 20, "[CLEAR] reset");
+
+	while(!leave_program){
+		if(!(mseconds50%5)){
+			printf(50, 50, "%02d", stepcounter);
+		}
+
+		if(kbhit()){
+			int input = ngetchx();
+
+			switch(input){
+				case KEY_ESC:
+					leave_program = 1;
+					break;
+				case KEY_ENTER:
+					running = !running;
+					break;
+				case KEY_CLEAR:
+					resettime = 1;
+					break;
+			}
+		}
+	}
+
+	CLrScr();
+	printf_xy(50, 50, "EAT");
+	printf_xy(50, 60, "SHIT");
+	printf_xy(50, 70, "INC");
+
+	int k = ngetchx();
+
+	SetIntVec(AUTO_INT_5, oldint5);
+
+	GKeyFlush();
+}
